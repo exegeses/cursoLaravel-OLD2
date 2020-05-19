@@ -53,3 +53,12 @@ Route::post('/proceso', function(){
 ###### uso de plantillas blade
 Route::view('/inicio', 'inicio');
 
+###########################################
+#####   USANDO RAW SQL  #######
+Route::get('/rawSelect', function(){
+    //imprimir datos de table regiones
+    $regiones = DB::select('SELECT regID, regNombre FROM regiones');
+    //dd( $regiones );
+    return view('regiones', ['regiones'=>$regiones] );
+});
+#tarea: listar datos de tabla destinos
