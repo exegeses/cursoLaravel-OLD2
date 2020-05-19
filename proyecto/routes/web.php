@@ -50,4 +50,6 @@ Route::post('/proceso', function(){
     return view('procesado', [ 'nombre'=>$nombre ] );
 });
 
+###### uso de plantillas blade
+Route::view('/inicio', 'inicio');
 
