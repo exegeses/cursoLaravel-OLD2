@@ -34,6 +34,20 @@ Route::get('/blade', function(){
             ]
     );
 });
+# pasar datos como parámetro (desde la URL)
+Route::get('/parametro/{curso}', function($curso){
+    return view('parametro', ['curso'=>$curso]);
+});
 
+# pasar parametros desde un form
+    # primero mostrar el form
+Route::get('/form', function(){
+    return view('form');
+});
+    # luego cargar la petición
+Route::post('/proceso', function(){
+    $nombre = $_POST['nombre'];
+    return view('procesado', [ 'nombre'=>$nombre ] );
+});
 
 
