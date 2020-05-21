@@ -76,3 +76,22 @@ Route::get('/destinos', function (){
                           );
     return view('destinos', [ 'destinos'=>$destinos ]);
 });
+/*
+ * métodos raw SQL
+    DB::insert('sql ');
+    DB::insert('insert into users (id, name) values (:id, :name)', [1, 'Dayle']);
+    DB::update('sql ');
+    DB::delete('sql ');
+*/
+// ejemplo modificación
+Route::get('/modificar', function(){
+    $precio = 7000;
+    DB::update(
+            'UPDATE destinos
+                    SET destPrecio = ?
+                WHERE destID = 8', [$precio]
+        );
+
+    return redirect('/destinos');
+
+});
