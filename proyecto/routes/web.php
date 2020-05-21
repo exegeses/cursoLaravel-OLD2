@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -62,3 +63,16 @@ Route::get('/rawSelect', function(){
     return view('regiones', ['regiones'=>$regiones] );
 });
 #tarea: listar datos de tabla destinos
+
+Route::get('/destinos', function (){
+    $destinos = DB::select(
+                            'SELECT
+                                    destID, destNombre,
+                                    d.regID, regNombre,
+                                    destPrecio,
+                                    destAsientos, destDisponibles
+                                FROM destinos d, regiones r
+                                WHERE d.regID = r.regID'
+                          );
+    return view('destinos', [ 'destinos'=>$destinos ]);
+});
