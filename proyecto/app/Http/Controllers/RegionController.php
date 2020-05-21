@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RegionController extends Controller
 {
@@ -14,7 +15,9 @@ class RegionController extends Controller
     public function index()
     {
         //
+        $regiones = DB::table('regiones')->get();
 
+        return view('adminRegiones', ['regiones'=>$regiones]);
     }
 
     /**
@@ -25,6 +28,7 @@ class RegionController extends Controller
     public function create()
     {
         //
+        return view('formAgregarRegion');
     }
 
     /**
@@ -36,6 +40,7 @@ class RegionController extends Controller
     public function store(Request $request)
     {
         //
+        return 'agregaremos region';
     }
 
     /**
