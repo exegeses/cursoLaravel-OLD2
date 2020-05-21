@@ -93,5 +93,8 @@ Route::get('/modificar', function(){
         );
 
     return redirect('/destinos');
-
 });
+
+##########
+## controladores + fluent queryBuilder
+Route::get('/adminRegiones', 'RegionController@index');
