@@ -56,4 +56,20 @@
 `php artisan serve `  
 
 
+## Clonando y Descargando un repo
 
+>Si clonamos un reporsitorio, el proyecto no va a funcionar porque no tienen todas las dependencias de Laravel.  
+>Entonces hay que "actualizar" el proyecto para que descargue dependencias.  
+> tenemos que ejecutar el comendo
+ 
+    composer update
+
+> Con este comando, va a chequear dependencias ir ir descargando el directorio Vendor además de otras dependencias.  
+> Cuando termine aún falta un paso más:  generar el archivos de configuración y la llave del proyecto.  
+> Esto se logra copiando el archivo .env.example con el nombre .env  
+> una vez copiado hay que generar la llave.  
+
+    php artisan key:generate  
+
+> Ahora sí el proyecto está listo para terminar de configurar y luego correr.  
+>
