@@ -100,6 +100,7 @@ Route::get('/modificar', function(){
 Route::get('/adminRegiones', 'RegionController@index');
 Route::get('/formAgregarRegion', 'RegionController@create');
 Route::post('/agregarRegion', 'RegionController@store');
+Route::get('/formModificarRegion/{regID}', 'RegionController@edit');
 
 
 //tarea  hacer adminDestinos

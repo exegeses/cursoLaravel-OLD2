@@ -69,6 +69,10 @@ class RegionController extends Controller
     public function edit($id)
     {
         //
+        $region = DB::table('regiones')
+                    ->where('regID', $id)
+                    ->first();
+        return view('formEditarRegion', [ 'region'=>$region ] );
     }
 
     /**
