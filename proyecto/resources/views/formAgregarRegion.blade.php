@@ -12,7 +12,9 @@
                 <input type="text" name="regNombre" class="form-control">
                 <br>
                 <button class="btn btn-dark">Agregar</button>
-
+                <a href="/adminRegiones" class="btn btn-outline-secondary ml-3">
+                    Volver a panel
+                </a>
             </form>
 
         </div>

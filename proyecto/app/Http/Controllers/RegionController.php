@@ -16,7 +16,6 @@ class RegionController extends Controller
     {
         //
         $regiones = DB::table('regiones')->get();
-
         return view('adminRegiones', ['regiones'=>$regiones]);
     }
 
@@ -40,7 +39,14 @@ class RegionController extends Controller
     public function store(Request $request)
     {
         //
-        return 'agregaremos region';
+        $regNombre = $_POST['regNombre'];
+        DB::table('regiones')
+            ->insert(
+                [ 'regNombre' => $regNombre ]
+            );
+
+        return redirect('/adminRegiones')
+                ->with('mensaje', 'Región '.$regNombre.' agregada correctamente');
     }
 
     /**

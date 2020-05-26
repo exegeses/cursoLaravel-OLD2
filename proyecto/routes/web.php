@@ -99,5 +99,7 @@ Route::get('/modificar', function(){
 ## controladores + fluent queryBuilder
 Route::get('/adminRegiones', 'RegionController@index');
 Route::get('/formAgregarRegion', 'RegionController@create');
+Route::post('/agregarRegion', 'RegionController@store');
+
 
 //tarea  hacer adminDestinos
