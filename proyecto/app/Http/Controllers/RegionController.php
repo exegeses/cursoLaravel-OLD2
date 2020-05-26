@@ -82,9 +82,18 @@ class RegionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
+        $regID = $_POST['regID'];
+        $regNombre = $_POST['regNombre'];
+        DB::table('regiones')
+                ->where('regID', $regID)
+                ->update(
+                    [ 'regNombre'=>$regNombre ]
+                );
+        return redirect('/adminRegiones')
+                    ->with('mensaje', 'Región '.$regNombre.' modificada correctamente');
     }
 
     /**
