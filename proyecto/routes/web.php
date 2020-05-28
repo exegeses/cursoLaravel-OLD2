@@ -102,5 +102,7 @@ Route::get('/formAgregarRegion', 'RegionController@create');
 Route::post('/agregarRegion', 'RegionController@store');
 Route::get('/formModificarRegion/{regID}', 'RegionController@edit');
 Route::post('/editarRegion', 'RegionController@update');
+Route::get('/formEliminarRegion/{regID}', 'RegionController@confirmarBaja');
+Route::post('/eliminarRegion', 'RegionController@destroy');
 
 Route::get('/adminDestinos', 'DestinoController@index');

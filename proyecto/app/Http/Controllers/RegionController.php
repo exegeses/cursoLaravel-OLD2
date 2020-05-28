@@ -96,14 +96,29 @@ class RegionController extends Controller
                     ->with('mensaje', 'Región '.$regNombre.' modificada correctamente');
     }
 
+    public function confirmarBaja($regID)
+    {
+        // detalle para confirmar baja
+        $Region = DB::table('regiones')
+                    ->where('regID', $regID)
+                        ->first();
+        return view('formEliminarRegion',
+                    [ 'region' => $Region ]
+                );
+    }
+
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
-        //
+        $regID = $_POST["regId"];
+        DB::table('regiones')
+            ->where('regId', $regID)
+            ->delete();
+        return redirect('/adminRegiones')->with('mensaje', 'Región eliminada correctamente');
     }
 }
