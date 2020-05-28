@@ -103,5 +103,4 @@ Route::post('/agregarRegion', 'RegionController@store');
 Route::get('/formModificarRegion/{regID}', 'RegionController@edit');
 Route::post('/editarRegion', 'RegionController@update');
 
-
-//tarea  hacer adminDestinos
+Route::get('/adminDestinos', 'DestinoController@index');

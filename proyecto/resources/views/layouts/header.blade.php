@@ -22,7 +22,7 @@
                 <div class="navbar-nav">
                     <a class="nav-item nav-link" href="#">Inicio</a>
                     <a class="nav-item nav-link" href="/adminRegiones">Regiones</a>
-                    <a class="nav-item nav-link" href="#">Destinos</a>
+                    <a class="nav-item nav-link" href="/adminDestinos">Destinos</a>
                 </div>
             </div>
         </nav>
