@@ -106,3 +106,6 @@ Route::get('/formEliminarRegion/{regID}', 'RegionController@confirmarBaja');
 Route::post('/eliminarRegion', 'RegionController@destroy');
 
 Route::get('/adminDestinos', 'DestinoController@index');
+Route::get('/formAgregarDestino', 'DestinoController@create');
+Route::post('/agregarDestino', 'DestinoController@store');
+

@@ -33,7 +33,11 @@ class DestinoController extends Controller
      */
     public function create()
     {
-        //
+        // listado de regiones para el combo
+        $regiones = DB::table('regiones')->get();
+        return view('formAgregarDestino',
+                    [ 'regiones' => $regiones ]
+                );
     }
 
     /**
@@ -44,7 +48,23 @@ class DestinoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $destNombre = $_POST["destNombre"];
+        $regId = $_POST['regID'];
+        $destPrecio = $_POST['destPrecio'];
+        $destAsientos = $_POST['destAsientos'];
+        $destDisponibles = $_POST['destDisponibles'];
+        DB::table('destinos')
+                ->insert(
+                    [
+                        'destNombre' => $destNombre,
+                        'regID' => $regId,
+                        'destPrecio' => $destPrecio,
+                        'destAsientos' => $destAsientos,
+                        'destDisponibles' => $destDisponibles
+                    ]
+                );
+        return redirect('/adminDestinos')
+                    ->with('mensaje', 'Destino: '.$destNombre.' agregado correctamente.');
     }
 
     /**
