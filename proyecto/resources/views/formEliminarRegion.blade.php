@@ -7,6 +7,7 @@
         <div class="alert border-danger text-danger col-6 mx-auto">
             Se eliminará la región: {{ $region->regNombre }}
             <form action="/eliminarRegion" method="post">
+                @csrf
                 <input type="hidden" name="regID" value="{{ $region->regID }}">
                 <button class="btn btn-danger btn-block my-3">
                     Confirmar baja
