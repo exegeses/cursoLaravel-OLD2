@@ -27,7 +27,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        //
+        return view('formAgregarCategoria');
     }
 
     /**
@@ -38,7 +38,15 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        ##validacion
+        $validacion = $request->validate(
+                            [
+                                'catNombre'=>'required|min:3|max:75'
+                            ]
+                        );
+        ## alta
+        $catNombre = $request->input('catNombre');
+        return 'ok';
     }
 
     /**
