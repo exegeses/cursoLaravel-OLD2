@@ -42,11 +42,19 @@ class CategoriaController extends Controller
         $validacion = $request->validate(
                             [
                                 'catNombre'=>'required|min:3|max:75'
+                            ],
+                            [
+                                'catNombre.required'=>'Complete el campo Nombre'
                             ]
                         );
         ## alta
-        $catNombre = $request->input('catNombre');
-        return 'ok';
+        $Categoria = new Categoria; // nueva instancia
+        $Categoria->catNombre = $request->input('catNombre'); // asignacion
+        $Categoria->save(); // guardado
+
+        return redirect('/adminCategorias')
+                    ->with('mensaje', 'Categoría: '.$request->input('catNombre').' agregada correctamente.');
+
     }
 
     /**
