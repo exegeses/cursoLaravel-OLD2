@@ -15,6 +15,11 @@ class ProductoController extends Controller
     public function index()
     {
         //
+        $productos = Producto::with('relMarca', 'relCategoria')->get();
+
+        return view('adminProductos',
+                    [ 'productos'=>$productos ]
+                );
     }
 
     /**

@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+######## CRUD Marcas ############
+Route::get('/adminMarcas', 'MarcaController@index');
+Route::get('/agregarMarca', 'MarcaController@create');
+
+######## CRUD Categorías ############
+Route::get('/adminCategorias', 'CategoriaController@index');
+Route::get('/agregarCategoria', 'CategoriaController@create');
+
+######## CRUD Productos ############
+Route::get('/adminProductos', 'ProductoController@index');

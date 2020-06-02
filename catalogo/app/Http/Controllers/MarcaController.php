@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Marca;
 use Illuminate\Http\Request;
 
 class MarcaController extends Controller
@@ -14,6 +15,10 @@ class MarcaController extends Controller
     public function index()
     {
         //
+        $marcas = Marca::paginate(7);
+        return view('adminMarcas',
+                    [ 'marcas' => $marcas ]
+                );
     }
 
     /**

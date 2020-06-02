@@ -2,7 +2,7 @@
 
     @section('contenido')
 
-        <h1>Panel de administración de categorias</h1>
+        <h1>Panel de administración de categorías</h1>
 
         @if ( session('mensaje') )
             <div class="alert alert-success">
@@ -16,17 +16,17 @@
                     <th>#</th>
                     <th>Región</th>
                     <th colspan="2">
-                        <a href="/formAgregarCategoria" class="btn btn-dark">
+                        <a href="/agregarCategoria" class="btn btn-dark">
                             Agregar
                         </a>
                     </th>
                 </tr>
             </thead>
             <tbody>
-
+        @foreach( $categorias as $categoria )
                 <tr>
-                    <td>#</td>
-                    <td>marca</td>
+                    <td>{{ $categoria->idCategoria }}</td>
+                    <td>{{ $categoria->catNombre }}</td>
                     <td>
                         <a href="" class="btn btn-outline-secondary">
                             Modificar
@@ -38,7 +38,7 @@
                         </a>
                     </td>
                 </tr>
-
+        @endforeach
 
             </tbody>
         </table>
