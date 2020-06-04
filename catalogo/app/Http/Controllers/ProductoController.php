@@ -79,8 +79,18 @@ class ProductoController extends Controller
         ## subir imagen
         $prdImagen = $this->subirImagen($request);
         ## guardar
+        $Producto = new Producto;
+        $Producto->prdNombre = $request->input('prdNombre');
+        $Producto->prdPrecio = $request->input('prdPrecio');
+        $Producto->idMarca = $request->input('idMarca');
+        $Producto->idCategoria = $request->input('idCategoria');
+        $Producto->prdPresentacion = $request->input('prdPresentacion');
+        $Producto->prdStock = $request->input('prdStock');
+        $Producto->prdImagen = $prdImagen;
+        $Producto->save();
 
-        return $prdImagen;
+        return redirect('/adminProductos')
+                ->with('mensaje', 'Producto: '.$prdNombre.' agregado correctamente.');
     }
 
     /**
@@ -100,9 +110,18 @@ class ProductoController extends Controller
      * @param  \App\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function edit(Producto $producto)
+    public function edit($idProducto)
     {
-        //
+        $marcas = Marca::all();
+        $categorias = Categoria::all();
+        $Producto = Producto::with('relMarca', 'relCategoria')->find($idProducto);
+        return view('formModificarProducto',
+                [
+                    'marcas'=>$marcas,
+                    'categorias'=>$categorias,
+                    'producto'=>$Producto
+                ]
+            );
     }
 
     /**

@@ -28,3 +28,5 @@ Route::post('/agregarCategoria', 'CategoriaController@store');
 Route::get('/adminProductos', 'ProductoController@index');
 Route::get('/agregarProducto', 'ProductoController@create');
 Route::post('/agregarProducto', 'ProductoController@store');
+Route::get('/modificarProducto/{idProducto}', 'ProductoController@edit');
+Route::post('/modificarProducto', 'ProductoController@update');
