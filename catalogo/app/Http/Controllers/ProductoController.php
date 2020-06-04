@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Categoria;
+use App\Marca;
 use App\Producto;
 use Illuminate\Http\Request;
 
@@ -29,7 +31,29 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        return view('formAgregarProducto');
+        $marcas = Marca::all();
+        $categorias = Categoria::all();
+        return view('formAgregarProducto',
+                    [
+                        'marcas'=>$marcas,
+                        'categorias'=>$categorias
+                    ]
+                    );
+
+    }
+
+    public function subirImagen(Request $request)
+    {
+        $prdImagen = 'noDisponible.jpg';
+        // original
+
+        //si enviaron un archivo
+        if( $request->file('prdImagen') ){
+            //$prdImagen = $request->file('prdImagen')->getClientOriginalName();
+            $prdImagen = time().'.'.$request->file('prdImagen')->clientExtension();
+            $request->file('prdImagen')->move( public_path('productos/'), $prdImagen );
+        }
+        return $prdImagen;
     }
 
     /**
@@ -40,7 +64,23 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        ## validación
+        $validacion = $request->validate(
+                           [
+                            'prdNombre'=>'required|min:5|max:70',
+                            'prdPrecio'=>'required|numeric|min:0',
+                            'prdPresentacion'=>'required|min:5|max:150',
+                            'prdStock'=>'required|integer|min:0',
+                            'prdImagen'=>'mimes:jpg,jpeg,png,svg,gif|max:2048'
+                           ]
+        );
+        ## capturamos datos enviados por el form
+        $prdNombre = $request->input('prdNombre');
+        ## subir imagen
+        $prdImagen = $this->subirImagen($request);
+        ## guardar
+
+        return $prdImagen;
     }
 
     /**

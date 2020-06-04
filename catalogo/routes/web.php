@@ -27,3 +27,4 @@ Route::post('/agregarCategoria', 'CategoriaController@store');
 ######## CRUD Productos ############
 Route::get('/adminProductos', 'ProductoController@index');
 Route::get('/agregarProducto', 'ProductoController@create');
+Route::post('/agregarProducto', 'ProductoController@store');
