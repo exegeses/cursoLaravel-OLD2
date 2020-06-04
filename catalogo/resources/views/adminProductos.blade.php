@@ -20,7 +20,7 @@
                     <th>Presentacion</th>
                     <th>Imagen</th>
                     <th colspan="2">
-                        <a href="/formAgregarCategoria" class="btn btn-dark">
+                        <a href="/agregarProducto" class="btn btn-dark">
                             Agregar
                         </a>
                     </th>
